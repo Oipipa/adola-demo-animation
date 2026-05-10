@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adola Call Sequence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="adola-sequence.css">
+<script defer src="adola-sequence.js"></script>
+</head>
+<body>
+<main class="sequence-stage" aria-label="Adola call routing animation">
+<section class="call-sequence" id="adola-sequence">
+<div class="phone-flow">
+<article class="demo-phone caller-phone" aria-label="Customer phone selecting AdolaBots">
+<div class="phone-speaker"></div>
+<div class="phone-screen">
+<div class="phone-status">
+<span>Customer</span>
+<span class="signal-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+</div>
+<div class="contacts-app">
+<p class="screen-label">contacts</p>
+<div class="contact-list">
+<div class="contact-row"><span>DS</span><strong>Dental Support</strong><small>appointment flow</small></div>
+<div class="contact-row"><span>RX</span><strong>Prescription Desk</strong><small>lookup flow</small></div>
+<div class="contact-row"><span>FD</span><strong>Family Doctor</strong><small>office line</small></div>
+<div class="contact-row"><span>CL</span><strong>Clinic Desk</strong><small>front desk</small></div>
+<div class="contact-row"><span>PH</span><strong>Pharmacy Line</strong><small>pickup queue</small></div>
+<div class="contact-row is-target"><span>AB</span><strong>AdolaBots</strong><small>voicebot</small></div>
+<div class="contact-row"><span>TS</span><strong>Tire Shop Bot</strong><small>service flow</small></div>
+<div class="contact-row"><span>QA</span><strong>Support Agent</strong><small>fallback flow</small></div>
+</div>
+</div>
+<div class="call-screen">
+<div class="call-avatar">AB</div>
+<p class="call-label call-label-dialing">Calling</p>
+<p class="call-label call-label-connected">Picked up</p>
+<strong>AdolaBots</strong>
+<div class="call-waves" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="voice-panel customer-voice" aria-label="Customer voice waveform">
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+<button type="button" class="hangup-button" data-restart-sequence aria-label="Hang up and restart sequence">
+<span aria-hidden="true"></span>
+</button>
+</div>
+</div>
+<div class="phone-home"></div>
+</article>
+
+<div class="route-board" aria-label="Call route from customer through Twilio and OpenAI SIP to the bot">
+<div class="route-track" aria-hidden="true"></div>
+<div class="route-progress" aria-hidden="true"></div>
+<div class="route-node route-node-twilio">Twilio</div>
+<div class="route-node route-node-openai-sip">OpenAI SIP</div>
+</div>
+
+<article class="demo-phone bot-phone" aria-label="AdolaBots voicebot answering customer">
+<div class="phone-speaker"></div>
+<div class="phone-screen">
+<div class="phone-status">
+<span>AdolaBots</span>
+<span class="agent-light" aria-hidden="true"></span>
+</div>
+<div class="agent-core" aria-hidden="true">
+<span></span><span></span><span></span><span></span>
+</div>
+<div class="incoming-card" aria-live="polite">Incoming: Customer</div>
+<div class="active-contact">Talking to: Customer</div>
+<div class="voice-panel bot-voice" aria-label="AdolaBots voice waveform">
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+<button type="button" class="hangup-button bot-hangup" data-restart-sequence aria-label="Hang up and restart sequence">
+<span aria-hidden="true"></span>
+</button>
+</div>
+<div class="phone-home"></div>
+</article>
+</div>
+
+<div class="http-bridge" aria-label="LLM API request effects">
+<div class="http-line" aria-hidden="true">
+<span class="http-arrow http-arrow-request"><i></i></span>
+<span class="http-arrow http-arrow-response"><i></i></span>
+</div>
+<div class="http-message" aria-live="polite">
+<span class="http-prefix">HTTP</span>
+<span class="http-tool" data-http-tool>get_customer_info</span>
+</div>
+<div class="http-status-code" aria-live="polite">200</div>
+</div>
+
+<aside class="infra-panel" aria-label="Adola infrastructure">
+<div class="infra-titlebar">
+<span>adola.infrastructure</span>
+<span class="infra-pixels" aria-hidden="true"><span></span><span></span><span></span></span>
+</div>
+<div class="infra-map">
+<article class="infra-node infra-db">
+<span class="infra-icon db-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" focusable="false">
+<path class="db-body" d="M12 14v20c0 3.6 5.4 6 12 6s12-2.4 12-6V14Z"></path>
+<ellipse class="db-top" cx="24" cy="14" rx="12" ry="5.5"></ellipse>
+<path class="db-ring" d="M12 22c0 3.6 5.4 6 12 6s12-2.4 12-6"></path>
+<path class="db-ring" d="M12 30c0 3.6 5.4 6 12 6s12-2.4 12-6"></path>
+</svg>
+</span>
+<strong>Database</strong>
+<small>customer data</small>
+</article>
+<div class="infra-link infra-link-db-api" aria-hidden="true">
+<span class="infra-arrow infra-arrow-up"><i></i></span>
+<span class="infra-arrow infra-arrow-down"><i></i></span>
+</div>
+<article class="infra-node infra-api">
+<span class="infra-icon api-icon" aria-hidden="true">API</span>
+<strong>API</strong>
+<small>orchestration</small>
+</article>
+<div class="infra-link infra-link-api-ui" aria-hidden="true">
+<span class="infra-arrow infra-arrow-up"><i></i></span>
+<span class="infra-arrow infra-arrow-down"><i></i></span>
+</div>
+<article class="infra-node infra-ui">
+<span class="infra-icon ui-icon" aria-hidden="true"></span>
+<strong>Configuration Dashboard</strong>
+<small>configuration and monitoring</small>
+</article>
+</div>
+</aside>
+</section>
+</main>
+</body>
+</html>

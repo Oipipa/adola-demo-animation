@@ -1,0 +1,191 @@
+.http-bridge {
+    position: absolute;
+    z-index: 4;
+    right: calc(min(420px, 35vw) - 55px);
+    top: calc(50% + 22px);
+    width: 235px;
+    height: 88px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(16px, -50%);
+    transition:
+        opacity 0.24s ease,
+        transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0s;
+}
+
+.http-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 34px;
+    transform: translateY(-50%);
+    overflow: visible;
+}
+
+.http-arrow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: none;
+    isolation: isolate;
+}
+
+.http-arrow-request {
+    top: 4px;
+}
+
+.http-arrow-response {
+    bottom: 4px;
+    background-position: right center;
+}
+
+.http-arrow::before,
+.http-arrow::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: transparent;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.http-arrow-request::after {
+    right: 0;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 18px solid transparent;
+}
+
+.http-arrow-response::before {
+    left: 0;
+    border-top: 11px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 11px solid transparent;
+}
+
+.http-arrow i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: block;
+    width: 0;
+    background: var(--request-flow);
+    opacity: 0;
+    z-index: 1;
+}
+
+.http-arrow-request i {
+    left: 0;
+}
+
+.http-arrow-response i {
+    right: 0;
+    background: var(--response-flow);
+}
+
+.http-arrow i::before,
+.http-arrow i::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transform: translateY(-50%);
+}
+
+.http-arrow-request i::after {
+    right: -18px;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 18px solid var(--request-flow);
+}
+
+.http-arrow-response i::before {
+    left: -18px;
+    border-top: 11px solid transparent;
+    border-right: 18px solid var(--response-flow);
+    border-bottom: 11px solid transparent;
+}
+
+.http-message {
+    position: absolute;
+    left: 16px;
+    right: auto;
+    top: -21px;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    max-width: 174px;
+    padding: 7px 9px;
+    border: 2px solid #3c3836;
+    background: #282828;
+    color: #fabd2f;
+    box-shadow: 4px 4px 0 var(--shadow);
+    font: 700 11px/1 "Pixelify Sans", "Nunito", sans-serif;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.http-prefix {
+    color: var(--shadow);
+}
+
+.http-tool {
+    min-width: 0;
+    overflow: hidden;
+    color: #fabd2f;
+    text-overflow: ellipsis;
+}
+
+.http-status-code {
+    position: absolute;
+    right: 4px;
+    bottom: -24px;
+    display: none;
+    padding: 6px 9px 5px;
+    border: 2px solid #3c3836;
+    background: #8ec07c;
+    color: #282828;
+    box-shadow: 3px 3px 0 var(--shadow);
+    font: 800 14px/1 "Nunito", "Trebuchet MS", sans-serif;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateY(5px) scale(0.72);
+}
+
+.call-sequence.is-bot-speaking .http-bridge,
+.call-sequence.is-customer-speaking .http-bridge,
+.call-sequence.is-http-appointments .http-bridge,
+.call-sequence.is-http-context .http-bridge,
+.call-sequence.is-http-update .http-bridge,
+.call-sequence.is-hanging-up .http-bridge,
+.call-sequence.is-answered .http-bridge {
+    opacity: 1;
+    transform: translate(0, -50%);
+    transition-delay: 0s;
+}
+
+.call-sequence.is-http-active .http-arrow-request i {
+    animation: httpFillRequest 0.34s linear forwards;
+}
+
+.call-sequence.is-http-active .http-arrow-response i {
+    animation: httpFillResponse 0.22s linear 0.62s forwards;
+}
+
+.call-sequence.is-http-active .http-message {
+    display: flex;
+    animation: httpLabel 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.call-sequence.is-http-active .http-status-code {
+    display: block;
+    animation: httpStatusPop 0.44s steps(2, end) 0.88s both;
+}

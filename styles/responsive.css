@@ -1,0 +1,246 @@
+@media (max-width: 900px) {
+    .sequence-stage {
+        align-items: start;
+        padding: 18px;
+    }
+
+    .call-sequence {
+        min-height: auto;
+        width: 100%;
+    }
+
+    .phone-flow {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
+        width: 100%;
+        transform-origin: center top;
+    }
+
+    .call-sequence.is-bot-speaking .phone-flow,
+    .call-sequence.is-customer-speaking .phone-flow,
+    .call-sequence.is-http-appointments .phone-flow,
+    .call-sequence.is-http-context .phone-flow,
+    .call-sequence.is-http-update .phone-flow,
+    .call-sequence.is-hanging-up .phone-flow,
+    .call-sequence.is-answered .phone-flow {
+        transform: none;
+    }
+
+    .infra-panel {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: min(100%, 360px);
+        min-height: 440px;
+        margin: 22px auto 0;
+        transform: translateY(24px) scale(0.96);
+    }
+
+    .call-sequence.is-bot-speaking .infra-panel,
+    .call-sequence.is-customer-speaking .infra-panel,
+    .call-sequence.is-http-appointments .infra-panel,
+    .call-sequence.is-http-context .infra-panel,
+    .call-sequence.is-http-update .infra-panel,
+    .call-sequence.is-hanging-up .infra-panel,
+    .call-sequence.is-answered .infra-panel {
+        transform: translateY(0) scale(1);
+    }
+
+    .http-bridge {
+        position: relative;
+        right: auto;
+        top: auto;
+        display: none;
+        width: min(100%, 320px);
+        margin: 10px auto 0;
+        transform: translateY(12px);
+    }
+
+    .http-message {
+        left: 50%;
+        right: auto;
+        min-width: min(260px, 100%);
+    }
+
+    .call-sequence.is-bot-speaking .http-bridge,
+    .call-sequence.is-customer-speaking .http-bridge,
+    .call-sequence.is-http-appointments .http-bridge,
+    .call-sequence.is-http-context .http-bridge,
+    .call-sequence.is-http-update .http-bridge,
+    .call-sequence.is-hanging-up .http-bridge,
+    .call-sequence.is-answered .http-bridge {
+        display: block;
+        transform: translateY(0);
+    }
+
+    .infra-map {
+        min-height: 396px;
+        padding: 18px;
+    }
+
+    .infra-node {
+        width: min(100%, 294px);
+    }
+
+    .demo-phone {
+        width: min(100%, 330px);
+    }
+
+    .phone-screen {
+        min-height: 252px;
+    }
+
+    .call-avatar {
+        width: 76px;
+        height: 76px;
+        font-size: 24px;
+    }
+
+    .call-sequence.is-bot-speaking .call-avatar,
+    .call-sequence.is-customer-speaking .call-avatar,
+    .call-sequence.is-http-appointments .call-avatar,
+    .call-sequence.is-http-context .call-avatar,
+    .call-sequence.is-http-update .call-avatar,
+    .call-sequence.is-hanging-up .call-avatar,
+    .call-sequence.is-answered .call-avatar {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+    }
+
+    .call-sequence.is-bot-speaking .call-screen,
+    .call-sequence.is-customer-speaking .call-screen,
+    .call-sequence.is-http-appointments .call-screen,
+    .call-sequence.is-http-context .call-screen,
+    .call-sequence.is-http-update .call-screen,
+    .call-sequence.is-hanging-up .call-screen,
+    .call-sequence.is-answered .call-screen {
+        gap: 6px;
+        padding: 10px;
+    }
+
+    .call-sequence.is-bot-speaking .call-screen strong,
+    .call-sequence.is-customer-speaking .call-screen strong,
+    .call-sequence.is-http-appointments .call-screen strong,
+    .call-sequence.is-http-context .call-screen strong,
+    .call-sequence.is-http-update .call-screen strong,
+    .call-sequence.is-hanging-up .call-screen strong,
+    .call-sequence.is-answered .call-screen strong {
+        font-size: 20px;
+    }
+
+    .voice-panel {
+        width: min(100%, 190px);
+        min-height: 54px;
+        padding: 10px;
+        gap: 4px;
+    }
+
+    .voice-panel span {
+        width: 6px;
+        height: 18px;
+    }
+
+    .hangup-button {
+        width: 46px;
+        height: 34px;
+    }
+
+    .hangup-button span {
+        width: 24px;
+        height: 15px;
+    }
+
+    .agent-core {
+        margin: 24px 0 14px;
+    }
+
+    .route-board {
+        width: 150px;
+        min-height: 134px;
+    }
+
+    .route-track,
+    .route-progress {
+        left: 50%;
+        top: 0;
+        width: 10px;
+        height: auto;
+        transform: translateX(-50%);
+    }
+
+    .route-track {
+        right: auto;
+        bottom: 0;
+    }
+
+    .route-track::after,
+    .route-progress::after {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -18px;
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+    .route-progress {
+        height: 0;
+        transition: height 0.76s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .route-node {
+        left: 50%;
+    }
+
+    .route-node-twilio {
+        top: 32%;
+    }
+
+    .route-node-openai-sip {
+        top: 68%;
+    }
+
+    .call-sequence.is-to-twilio .route-progress {
+        width: 10px;
+        height: 32%;
+        opacity: 1;
+    }
+
+    .call-sequence.is-to-openai-sip .route-progress {
+        width: 10px;
+        height: 68%;
+        opacity: 1;
+    }
+
+    .call-sequence.is-to-bot .route-progress,
+    .call-sequence.is-incoming .route-progress,
+    .call-sequence.is-bot-speaking .route-progress,
+    .call-sequence.is-customer-speaking .route-progress,
+    .call-sequence.is-http-appointments .route-progress,
+    .call-sequence.is-http-context .route-progress,
+    .call-sequence.is-http-update .route-progress,
+    .call-sequence.is-hanging-up .route-progress,
+    .call-sequence.is-answered .route-progress {
+        width: 10px;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .call-sequence.is-scrolling .contact-list,
+    .call-sequence.is-selected .contact-list,
+    .call-sequence.is-dialing .contact-list,
+    .call-sequence.is-to-twilio .contact-list,
+    .call-sequence.is-to-openai-sip .contact-list,
+    .call-sequence.is-to-bot .contact-list,
+    .call-sequence.is-incoming .contact-list,
+    .call-sequence.is-bot-speaking .contact-list,
+    .call-sequence.is-customer-speaking .contact-list,
+    .call-sequence.is-http-appointments .contact-list,
+    .call-sequence.is-http-context .contact-list,
+    .call-sequence.is-http-update .contact-list,
+    .call-sequence.is-hanging-up .contact-list,
+    .call-sequence.is-answered .contact-list {
+        transform: translateY(-298px);
+    }
+}

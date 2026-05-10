@@ -1,0 +1,277 @@
+.call-sequence.is-scrolling .contact-list,
+.call-sequence.is-selected .contact-list,
+.call-sequence.is-dialing .contact-list,
+.call-sequence.is-to-twilio .contact-list,
+.call-sequence.is-to-openai-sip .contact-list,
+.call-sequence.is-to-bot .contact-list,
+.call-sequence.is-incoming .contact-list,
+.call-sequence.is-bot-speaking .contact-list,
+.call-sequence.is-customer-speaking .contact-list,
+.call-sequence.is-hanging-up .contact-list,
+.call-sequence.is-answered .contact-list {
+    transform: translateY(-306px);
+}
+
+.call-sequence.is-dialing .contacts-app,
+.call-sequence.is-to-twilio .contacts-app,
+.call-sequence.is-to-openai-sip .contacts-app,
+.call-sequence.is-to-bot .contacts-app,
+.call-sequence.is-incoming .contacts-app,
+.call-sequence.is-bot-speaking .contacts-app,
+.call-sequence.is-customer-speaking .contacts-app,
+.call-sequence.is-hanging-up .contacts-app,
+.call-sequence.is-answered .contacts-app {
+    opacity: 0;
+    transform: translateY(-18px);
+    pointer-events: none;
+}
+
+.call-sequence.is-dialing .call-screen,
+.call-sequence.is-to-twilio .call-screen,
+.call-sequence.is-to-openai-sip .call-screen,
+.call-sequence.is-to-bot .call-screen,
+.call-sequence.is-incoming .call-screen,
+.call-sequence.is-bot-speaking .call-screen,
+.call-sequence.is-customer-speaking .call-screen,
+.call-sequence.is-hanging-up .call-screen,
+.call-sequence.is-answered .call-screen {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.call-sequence.is-to-twilio .route-progress {
+    width: 32%;
+    opacity: 1;
+}
+
+.call-sequence.is-to-openai-sip .route-progress {
+    width: 68%;
+    opacity: 1;
+}
+
+.call-sequence.is-to-bot .route-progress,
+.call-sequence.is-incoming .route-progress,
+.call-sequence.is-bot-speaking .route-progress,
+.call-sequence.is-customer-speaking .route-progress,
+.call-sequence.is-hanging-up .route-progress,
+.call-sequence.is-answered .route-progress {
+    width: 100%;
+    opacity: 1;
+}
+
+.call-sequence.is-to-twilio .route-node-twilio,
+.call-sequence.is-to-openai-sip .route-node-twilio,
+.call-sequence.is-to-bot .route-node-twilio,
+.call-sequence.is-incoming .route-node-twilio,
+.call-sequence.is-bot-speaking .route-node-twilio,
+.call-sequence.is-customer-speaking .route-node-twilio,
+.call-sequence.is-hanging-up .route-node-twilio,
+.call-sequence.is-answered .route-node-twilio,
+.call-sequence.is-to-openai-sip .route-node-openai-sip,
+.call-sequence.is-to-bot .route-node-openai-sip,
+.call-sequence.is-incoming .route-node-openai-sip,
+.call-sequence.is-bot-speaking .route-node-openai-sip,
+.call-sequence.is-customer-speaking .route-node-openai-sip,
+.call-sequence.is-hanging-up .route-node-openai-sip,
+.call-sequence.is-answered .route-node-openai-sip {
+    opacity: 1;
+    background: var(--accent-yellow);
+    transform: translate(-50%, -50%) translateY(-2px);
+}
+
+.call-sequence.is-to-bot .incoming-card,
+.call-sequence.is-incoming .incoming-card {
+    display: block;
+}
+
+.call-sequence.is-incoming .incoming-card {
+    animation: incomingPulse 0.72s steps(2, end) infinite;
+}
+
+.call-sequence.is-bot-speaking .agent-core,
+.call-sequence.is-customer-speaking .agent-core,
+.call-sequence.is-hanging-up .agent-core {
+    margin: 24px 0 14px;
+}
+
+.call-sequence.is-bot-speaking .active-contact,
+.call-sequence.is-customer-speaking .active-contact,
+.call-sequence.is-hanging-up .active-contact,
+.call-sequence.is-answered .active-contact {
+    display: block;
+}
+
+.call-sequence.is-bot-speaking .agent-light,
+.call-sequence.is-customer-speaking .agent-light,
+.call-sequence.is-hanging-up .agent-light,
+.call-sequence.is-answered .agent-light {
+    background: #8ec07c;
+    animation: agentOnline 1s ease-out infinite;
+}
+
+.call-sequence.is-bot-speaking .call-label-dialing,
+.call-sequence.is-customer-speaking .call-label-dialing,
+.call-sequence.is-hanging-up .call-label-dialing,
+.call-sequence.is-answered .call-label-dialing,
+.call-sequence.is-bot-speaking .call-waves,
+.call-sequence.is-customer-speaking .call-waves,
+.call-sequence.is-hanging-up .call-waves,
+.call-sequence.is-answered .call-waves {
+    display: none;
+}
+
+.call-sequence.is-bot-speaking .call-label-connected,
+.call-sequence.is-customer-speaking .call-label-connected,
+.call-sequence.is-hanging-up .call-label-connected,
+.call-sequence.is-answered .call-label-connected,
+.call-sequence.is-bot-speaking .voice-panel,
+.call-sequence.is-customer-speaking .voice-panel,
+.call-sequence.is-hanging-up .voice-panel,
+.call-sequence.is-answered .voice-panel {
+    display: flex;
+}
+
+.call-sequence.is-bot-speaking .hangup-button,
+.call-sequence.is-customer-speaking .hangup-button,
+.call-sequence.is-hanging-up .hangup-button,
+.call-sequence.is-answered .hangup-button {
+    display: grid;
+}
+
+.call-sequence.is-bot-speaking .call-avatar,
+.call-sequence.is-customer-speaking .call-avatar,
+.call-sequence.is-hanging-up .call-avatar,
+.call-sequence.is-answered .call-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+}
+
+.call-sequence.is-bot-speaking .call-screen,
+.call-sequence.is-customer-speaking .call-screen,
+.call-sequence.is-hanging-up .call-screen,
+.call-sequence.is-answered .call-screen {
+    gap: 9px;
+}
+
+.call-sequence.is-bot-speaking .call-label-connected,
+.call-sequence.is-customer-speaking .call-label-connected,
+.call-sequence.is-hanging-up .call-label-connected,
+.call-sequence.is-answered .call-label-connected {
+    display: block;
+}
+
+.call-sequence.is-bot-speaking .bot-voice,
+.call-sequence.is-customer-speaking .customer-voice {
+    border-color: #fabd2f;
+    box-shadow:
+        4px 4px 0 #282828,
+        0 0 0 3px rgba(215, 153, 33, 0.2);
+    opacity: 1;
+}
+
+.call-sequence.is-bot-speaking .bot-voice span,
+.call-sequence.is-customer-speaking .customer-voice span {
+    animation-play-state: running;
+    opacity: 1;
+}
+
+.call-sequence.is-hanging-up .caller-phone .hangup-button {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #282828;
+    background: #9d0006;
+}
+
+.call-sequence.is-http-appointments .contact-list,
+.call-sequence.is-http-context .contact-list,
+.call-sequence.is-http-update .contact-list {
+    transform: translateY(-306px);
+}
+
+.call-sequence.is-http-appointments .contacts-app,
+.call-sequence.is-http-context .contacts-app,
+.call-sequence.is-http-update .contacts-app {
+    opacity: 0;
+    transform: translateY(-18px);
+    pointer-events: none;
+}
+
+.call-sequence.is-http-appointments .call-screen,
+.call-sequence.is-http-context .call-screen,
+.call-sequence.is-http-update .call-screen {
+    gap: 9px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.call-sequence.is-http-appointments .route-progress,
+.call-sequence.is-http-context .route-progress,
+.call-sequence.is-http-update .route-progress {
+    width: 100%;
+    opacity: 1;
+}
+
+.call-sequence.is-http-appointments .route-node-twilio,
+.call-sequence.is-http-context .route-node-twilio,
+.call-sequence.is-http-update .route-node-twilio,
+.call-sequence.is-http-appointments .route-node-openai-sip,
+.call-sequence.is-http-context .route-node-openai-sip,
+.call-sequence.is-http-update .route-node-openai-sip {
+    opacity: 1;
+    background: var(--accent-yellow);
+    transform: translate(-50%, -50%) translateY(-2px);
+}
+
+.call-sequence.is-http-appointments .agent-core,
+.call-sequence.is-http-context .agent-core,
+.call-sequence.is-http-update .agent-core {
+    margin: 24px 0 14px;
+}
+
+.call-sequence.is-http-appointments .active-contact,
+.call-sequence.is-http-context .active-contact,
+.call-sequence.is-http-update .active-contact {
+    display: block;
+}
+
+.call-sequence.is-http-appointments .agent-light,
+.call-sequence.is-http-context .agent-light,
+.call-sequence.is-http-update .agent-light {
+    background: #8ec07c;
+    animation: agentOnline 1s ease-out infinite;
+}
+
+.call-sequence.is-http-appointments .call-label-dialing,
+.call-sequence.is-http-context .call-label-dialing,
+.call-sequence.is-http-update .call-label-dialing,
+.call-sequence.is-http-appointments .call-waves,
+.call-sequence.is-http-context .call-waves,
+.call-sequence.is-http-update .call-waves {
+    display: none;
+}
+
+.call-sequence.is-http-appointments .call-label-connected,
+.call-sequence.is-http-context .call-label-connected,
+.call-sequence.is-http-update .call-label-connected {
+    display: block;
+}
+
+.call-sequence.is-http-appointments .voice-panel,
+.call-sequence.is-http-context .voice-panel,
+.call-sequence.is-http-update .voice-panel {
+    display: flex;
+}
+
+.call-sequence.is-http-appointments .hangup-button,
+.call-sequence.is-http-context .hangup-button,
+.call-sequence.is-http-update .hangup-button {
+    display: grid;
+}
+
+.call-sequence.is-http-appointments .call-avatar,
+.call-sequence.is-http-context .call-avatar,
+.call-sequence.is-http-update .call-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+}

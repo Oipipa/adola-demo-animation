@@ -1,0 +1,326 @@
+.infra-panel {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 50%;
+    width: min(420px, 35vw);
+    min-height: 500px;
+    border: 3px solid var(--border);
+    background: var(--paper);
+    box-shadow: 8px 8px 0 var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(38px, -50%) scale(0.94);
+    transition:
+        opacity 0.36s ease,
+        transform 0.66s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.infra-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 44px;
+    padding: 10px 13px;
+    border-bottom: 2px solid var(--border);
+    background: #ebdbb2;
+    color: var(--ink);
+    font: 700 15px/1 "Pixelify Sans", "Nunito", sans-serif;
+}
+
+.infra-pixels {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 10px);
+    gap: 5px;
+}
+
+.infra-pixels span {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #3c3836;
+    background: var(--accent-red);
+    box-shadow: 2px 2px 0 rgba(124, 111, 100, 0.24);
+}
+
+.infra-pixels span:nth-child(2) {
+    background: var(--accent-yellow);
+}
+
+.infra-pixels span:nth-child(3) {
+    background: var(--accent-green);
+}
+
+.infra-map {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 54px auto 54px auto;
+    gap: 0;
+    align-items: center;
+    justify-items: center;
+    min-height: 452px;
+    padding: 24px;
+    background:
+        linear-gradient(90deg, rgba(124, 111, 100, 0.12) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(124, 111, 100, 0.12) 1px, transparent 1px),
+        #f2e5bc;
+    background-size: 14px 14px;
+}
+
+.infra-node {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+    width: min(100%, 310px);
+    min-height: 82px;
+    padding: 13px 14px;
+    border: 2px solid #3c3836;
+    background: var(--paper);
+    box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.infra-node strong,
+.infra-node small {
+    min-width: 0;
+}
+
+.infra-node strong {
+    color: #3c3836;
+    font: 800 18px/1.15 "Nunito", "Trebuchet MS", sans-serif;
+}
+
+.infra-node small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.infra-icon {
+    position: relative;
+    grid-row: 1 / 3;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #3c3836;
+    background: var(--accent-blue);
+    color: var(--paper);
+    font: 700 13px/1 "Pixelify Sans", "Nunito", sans-serif;
+}
+
+.db-icon {
+    background: var(--accent-blue);
+}
+
+.db-icon svg {
+    display: block;
+    width: 38px;
+    height: 38px;
+}
+
+.db-body,
+.db-top {
+    fill: var(--paper);
+    stroke: #3c3836;
+    stroke-width: 2.6;
+}
+
+.db-ring {
+    fill: none;
+    stroke: #3c3836;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+}
+
+.api-icon {
+    background: var(--accent-yellow);
+    color: #282828;
+}
+
+.ui-icon {
+    background:
+        linear-gradient(90deg, transparent 0 9px, #3c3836 9px 12px, transparent 12px),
+        linear-gradient(180deg, var(--accent-blue) 0 34px, #fbf1c7 34px 100%);
+}
+
+.ui-icon::after {
+    content: "";
+    width: 24px;
+    height: 14px;
+    border: 2px solid #3c3836;
+    background: #282828;
+}
+
+.infra-link {
+    position: relative;
+    width: 44px;
+    height: 54px;
+    opacity: 0;
+    transform: scaleY(0.58);
+    transform-origin: center;
+    transition:
+        opacity 0.16s ease,
+        transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0s;
+}
+
+.infra-arrow {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    width: 8px;
+    background: var(--route-idle);
+    isolation: isolate;
+}
+
+.infra-arrow::before,
+.infra-arrow::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: transparent;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.infra-arrow-up {
+    left: 6px;
+}
+
+.infra-arrow-up::before {
+    top: -6px;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid var(--route-idle);
+    border-left: 8px solid transparent;
+}
+
+.infra-arrow-down {
+    right: 6px;
+}
+
+.infra-arrow-down::after {
+    bottom: -6px;
+    border-top: 12px solid var(--route-idle);
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+
+.infra-link-db-api .infra-arrow,
+.infra-link-api-ui .infra-arrow {
+    background: transparent;
+}
+
+.infra-link-db-api .infra-arrow {
+    top: 0;
+    bottom: 0;
+}
+
+.infra-link-db-api .infra-arrow-up::before,
+.infra-link-api-ui .infra-arrow-up::before {
+    border-bottom-color: transparent;
+}
+
+.infra-link-db-api .infra-arrow-down::after,
+.infra-link-api-ui .infra-arrow-down::after {
+    border-top-color: transparent;
+}
+
+.infra-arrow i {
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 0;
+    background: var(--request-flow);
+    opacity: 0;
+    z-index: 1;
+}
+
+.infra-arrow-up i {
+    bottom: 0;
+}
+
+.infra-arrow-down i {
+    top: 0;
+    background: var(--response-flow);
+}
+
+.infra-arrow i::before,
+.infra-arrow i::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translateX(-50%);
+}
+
+.infra-arrow-up i::before {
+    top: -6px;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid var(--request-flow);
+    border-left: 8px solid transparent;
+}
+
+.infra-arrow-down i::after {
+    bottom: -6px;
+    border-top: 12px solid var(--response-flow);
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+
+.infra-link-db-api .infra-arrow-up i::before {
+    top: -12px;
+}
+
+.infra-link-db-api .infra-arrow-down i::after {
+    bottom: -12px;
+}
+
+.call-sequence.is-bot-speaking .infra-panel,
+.call-sequence.is-customer-speaking .infra-panel,
+.call-sequence.is-http-appointments .infra-panel,
+.call-sequence.is-http-context .infra-panel,
+.call-sequence.is-http-update .infra-panel,
+.call-sequence.is-hanging-up .infra-panel,
+.call-sequence.is-answered .infra-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(0, -50%) scale(1);
+}
+
+.call-sequence.is-bot-speaking .infra-link,
+.call-sequence.is-customer-speaking .infra-link,
+.call-sequence.is-http-appointments .infra-link,
+.call-sequence.is-http-context .infra-link,
+.call-sequence.is-http-update .infra-link,
+.call-sequence.is-hanging-up .infra-link,
+.call-sequence.is-answered .infra-link {
+    opacity: 1;
+    transform: scaleY(1);
+    transition-delay: 0s;
+}
+
+.call-sequence.is-http-active .infra-link-db-api .infra-arrow-down i {
+    animation: infraFillDownEdge 0.1s linear 0.49s forwards;
+}
+
+.call-sequence.is-http-active .infra-link-db-api .infra-arrow-up i {
+    animation: infraFillUpEdge 0.1s linear 0.36s forwards;
+}
+
+.call-sequence.is-http-active .infra-api {
+    border-color: var(--accent-red);
+    box-shadow:
+        5px 5px 0 var(--shadow),
+        0 0 0 4px rgba(204, 36, 29, 0.16);
+}
+
+.call-sequence.is-http-active .infra-db {
+    animation: infraNodeTouched 0.01s linear 0.47s both;
+}
