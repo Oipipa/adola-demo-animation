@@ -70,3 +70,27 @@
 .route-node-openai-sip {
     left: 68%;
 }
+
+.rtp-status-banner {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 62px);
+    z-index: 2;
+    display: none;
+    padding: 6px 9px 5px;
+    border: 2px solid #3c3836;
+    background: #8ec07c;
+    color: #282828;
+    box-shadow: 3px 3px 0 var(--shadow);
+    font: 800 13px/1 "Nunito", "Trebuchet MS", sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translate(-50%, 5px) scale(0.72);
+}
+
+.call-sequence.is-rtp-established .rtp-status-banner {
+    display: block;
+    animation:
+        rtpStatusPop 0.44s steps(2, end) both,
+        rtpStatusIdle 1.8s ease-in-out 0.44s infinite;
+}

@@ -18,12 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "is-answered"
     ];
     const httpStages = ["is-http-active"];
+    const rtpStage = "is-rtp-established";
     const httpTool = sequence.querySelector("[data-http-tool]");
     const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let timers = [];
 
     if (prefersReducedMotion) {
         setStage("is-answered");
+        sequence.classList.add(rtpStage);
         bindRestartButtons();
         return;
     }
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function runCycle() {
         clearTimers();
         clearStages();
+        sequence.classList.remove(rtpStage);
 
         timers = [
             window.setTimeout(() => setStage("is-scrolling"), 350),
@@ -82,6 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function setStage(stage) {
         clearStages();
         sequence.classList.add(stage);
+
+        if (stage === "is-incoming") {
+            sequence.classList.add(rtpStage);
+        }
     }
 
     function startHttpFlow(toolName) {

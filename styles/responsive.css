@@ -1,6 +1,42 @@
-@media (max-width: 900px) {
+.small-screen-message {
+    display: none;
+}
+
+@media (max-width: 1400px) {
+    .call-sequence {
+        display: none;
+    }
+
+    .small-screen-message {
+        display: grid;
+        place-items: center;
+        gap: 10px;
+        width: min(100%, 420px);
+        min-height: 220px;
+        padding: 28px;
+        border: 3px solid var(--border);
+        background: var(--paper);
+        box-shadow: 8px 8px 0 var(--shadow);
+        text-align: center;
+    }
+
+    .small-screen-message strong,
+    .small-screen-message p {
+        margin: 0;
+    }
+
+    .small-screen-message strong {
+        color: var(--ink);
+        font: 800 24px/1.15 "Nunito", "Trebuchet MS", sans-serif;
+    }
+
+    .small-screen-message p {
+        color: var(--muted);
+        font-weight: 800;
+    }
+
     .sequence-stage {
-        align-items: start;
+        place-items: center;
         padding: 18px;
     }
 
@@ -201,6 +237,11 @@
         top: 68%;
     }
 
+    .rtp-status-banner {
+        left: calc(50% + 72px);
+        top: 76%;
+    }
+
     .call-sequence.is-to-twilio .route-progress {
         width: 10px;
         height: 32%;
@@ -242,5 +283,13 @@
     .call-sequence.is-hanging-up .contact-list,
     .call-sequence.is-answered .contact-list {
         transform: translateY(-298px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .call-sequence.is-rtp-established .rtp-status-banner {
+        animation: none;
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
     }
 }
